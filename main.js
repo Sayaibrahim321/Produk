@@ -13,12 +13,12 @@ import {
 } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyDFYmmVvk-jLZIeAdYKiTwVw2jqd4VINFA",
-  authDomain: "insan-cemerlang.firebaseapp.com",
-  projectId: "insan-cemerlang",
-  storageBucket: "insan-cemerlang.appspot.com",
-  messagingSenderId: "579109661574",
-  appId: "1:579109661574:web:4a7cd4060f70eded945a07"
+  apiKey: "AIzaSyAPWh3k3nD1T4UOw_y4pkrc2DZW144Qzd8",
+  authDomain: "ibrahim-1b654.firebaseapp.com",
+  projectId: "ibrahim-1b654",
+  storageBucket: "ibrahim-1b654.appspot.com",
+  messagingSenderId: "1009341282196",
+  appId: "1:1009341282196:web:7ccf1fc220cf942a274181"
 };
 
 // Inisialisasi Firebase
@@ -58,4 +58,8 @@ export async function tambahProduk(nama, harga, stok) {
   } catch (e) {
     console.log('Gagal menambah produk ' + e);
   }
+}
+
+export async function hapusProduk(docId) {
+  await deleteDoc(doc(db, "produk", docId))
 }

@@ -21,6 +21,7 @@
         <th scope="col">Nama Produk</th>
         <th scope="col">Harga</th>
         <th scope="col">Stok</th>
+        <th scope="col">Aksi</th>
       </tr>
     </thead>
     <tbody>
@@ -32,11 +33,11 @@
   <a href="form-produk.html">Tambah Produk</a>
   
   <script type="module">
-    import { ambilDaftarProduk, formatAngka } from './main.js';
+    import { ambilDaftarProduk, formatAngka,hapusProduk } from './main.js';
     
     $(document).ready(async function() {
       let elemenDaftar = $("#daftar-produk > tbody");
-      let DaftarProduk = await ambilDaftarProduk();
+      let daftarProduk = await ambilDaftarProduk();
       let nomor = 1;
       
       daftarProduk.forEach((data) => {
@@ -46,12 +47,18 @@
           '<td>' + data.nama + '</td>' +
           '<td>' + formatAngka(data.harga) + '</td>' +
           '<td>' + data.stok + '</td>' +
+      '<td>' +'<button class="btn btn-danger tombol-hapus" data ="' + data.id + '">hapus</button>' + '</td>' +
           '</tr>'
         );
         nomor = nomor + 1;
       });
       
       $('#loader').hide();
+      
+      $('.tombol-hapus').click(async function() {
+        await hapusProduk($(this).attr('data'));
+        location.reload();
+      });
       
     });
   </script>
